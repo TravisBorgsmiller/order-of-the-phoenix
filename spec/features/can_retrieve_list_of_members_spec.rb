@@ -7,10 +7,14 @@ RSpec.describe 'As a user when visiting /' do
       visit '/'
       expect(current_path).to eq('/')
 
-      select "hogwarts_houses", :from => :house
+      select 'Gryffindor', :from => :house
       click_on 'Search For Members'
       expect(current_path).to eq('/search')
 
+      expect(page).to have_content("Sirius Black")
+      expect(page).to have_content("Ronald Weasley")
+      expect(page).to have_content("jack russell terrier")
+      expect(page).to have_content("Gryffindor")
     end
   end
 end
